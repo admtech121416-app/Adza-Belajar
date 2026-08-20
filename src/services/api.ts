@@ -27,8 +27,8 @@ export const api = {
         appName: 'Adza Belajar',
         heroTitle: 'SAYA SUKA BELAJAR',
         heroSubtitle: 'Ayo main dan belajar bersama di Adza Belajar!',
-        logoUrl: 'https://drive.google.com/uc?export=view&id=1-rNGqb6l_Riq4oQVaUwsI3uQPkzgU4o8',
-        faviconUrl: 'https://drive.google.com/uc?export=view&id=1-rNGqb6l_Riq4oQVaUwsI3uQPkzgU4o8'
+        logoUrl: '/logo.png',
+        faviconUrl: '/logo.png'
       };
     }
     return data as SettingsData;

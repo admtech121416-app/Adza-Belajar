@@ -46,11 +46,7 @@ export default function AdminDashboard({ settings }: { settings: SettingsData | 
       {/* Sidebar */}
       <aside className="w-full md:w-64 bg-white border-r border-slate-200 shrink-0 md:h-screen sticky top-0 flex flex-col">
         <div className="h-16 flex items-center px-6 border-b border-slate-200 gap-3">
-          {settings?.logoUrl ? (
-            <img src={settings.logoUrl} alt="Logo" className="w-8 h-8 object-contain rounded" />
-          ) : (
-            <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center text-white font-bold text-sm">A</div>
-          )}
+          <img src={settings?.logoUrl || '/logo.png'} alt="Logo" className="w-8 h-8 object-contain rounded" />
           <span className="font-bold text-slate-800 tracking-tight">Admin Panel</span>
         </div>
         

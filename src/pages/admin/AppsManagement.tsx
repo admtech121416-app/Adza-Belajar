@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { api } from '../../services/api';
 import { AppData, CategoryData } from '../../types';
 import { Plus, Edit2, Trash2, X, Check } from 'lucide-react';
+import { formatImageUrl } from '../../lib/utils';
 
 export default function AppsManagement() {
   const [apps, setApps] = useState<AppData[]>([]);
@@ -56,7 +57,7 @@ export default function AppsManagement() {
         name: '',
         description: '',
         url: '',
-        category: categories[0]?.name || 'Semua',
+        category: categories.find(c => c.name !== 'Semua')?.name || 'Semua',
         icon: '',
         active: true,
         order: apps.length + 1
@@ -149,7 +150,7 @@ export default function AppsManagement() {
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         {app.icon ? (
-                           <img src={app.icon} alt="" className="w-10 h-10 object-contain rounded-lg bg-slate-100 p-1 border border-slate-200" />
+                           <img src={formatImageUrl(app.icon)} alt="" className="w-10 h-10 object-contain rounded-lg bg-slate-100 p-1 border border-slate-200" />
                         ) : (
                            <div className="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400">?</div>
                         )}

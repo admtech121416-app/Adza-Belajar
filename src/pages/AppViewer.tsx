@@ -3,6 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ExternalLink, Maximize, RotateCw } from 'lucide-react';
 import { api } from '../services/api';
 import { AppData } from '../types';
+import { formatImageUrl } from '../lib/utils';
 
 export default function AppViewer() {
   const { id } = useParams<{ id: string }>();
@@ -94,7 +95,7 @@ export default function AppViewer() {
           </Link>
           
           <div className="hidden sm:flex items-center gap-3 border-l-4 border-slate-900 pl-4 ml-2">
-            {app.icon && <img src={app.icon} alt="" className="w-12 h-12 object-contain bg-white border-2 border-slate-900 rounded-lg p-1 shadow-[2px_2px_0_0_#0f172a]" />}
+            {app.icon && <img src={formatImageUrl(app.icon)} alt="" className="w-12 h-12 object-contain bg-white border-2 border-slate-900 rounded-lg p-1 shadow-[2px_2px_0_0_#0f172a]" />}
             <div>
               <h1 className="font-black text-white text-2xl leading-tight uppercase [-webkit-text-stroke:1px_#0f172a] drop-shadow-[2px_2px_0_#0f172a]">{app.name}</h1>
             </div>

@@ -4,6 +4,7 @@ import { Search, Star, Clock, Gamepad2, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 import { api } from '../services/api';
 import { AppData, CategoryData, SettingsData } from '../types';
+import { formatImageUrl } from '../lib/utils';
 
 export default function LandingPage({ settings }: { settings: SettingsData | null }) {
   const [apps, setApps] = useState<AppData[]>([]);
@@ -38,7 +39,7 @@ export default function LandingPage({ settings }: { settings: SettingsData | nul
 
   const filteredApps = apps
     .filter(a => a.active)
-    .filter(a => activeCategory === 'Semua' || activeCategory === '' || a.category === activeCategory)
+    .filter(a => activeCategory === 'Semua' || activeCategory === '' || (a.category && a.category.trim().toLowerCase() === activeCategory.trim().toLowerCase()))
     .filter(a => 
       a.name.toLowerCase().includes(search.toLowerCase()) || 
       a.description.toLowerCase().includes(search.toLowerCase()) ||
@@ -58,13 +59,7 @@ export default function LandingPage({ settings }: { settings: SettingsData | nul
       <header className="sticky top-0 z-50 bg-white border-b-4 border-slate-900 shadow-[0_4px_0_0_rgba(0,0,0,0.1)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            {settings?.logoUrl ? (
-              <img src={settings.logoUrl} alt="Logo" className="h-12 w-12 object-contain bg-yellow-100 border-2 border-slate-900 rounded-xl shadow-[2px_2px_0_0_#0f172a] transform -rotate-3" />
-            ) : (
-              <div className="h-12 w-12 bg-yellow-400 border-2 border-slate-900 rounded-xl shadow-[2px_2px_0_0_#0f172a] flex items-center justify-center text-slate-900 font-black text-xl transform -rotate-3">
-                A
-              </div>
-            )}
+            <img src={settings?.logoUrl || '/logo.png'} alt="Logo" className="h-12 w-12 object-contain bg-yellow-100 border-2 border-slate-900 rounded-xl shadow-[2px_2px_0_0_#0f172a] transform -rotate-3" />
             <span className="font-black text-2xl tracking-tight text-slate-900 uppercase [-webkit-text-stroke:1px_#0f172a] text-white drop-shadow-[2px_2px_0_#0f172a]">
               {settings?.appName || 'Adza Belajar'}
             </span>
@@ -220,7 +215,7 @@ export default function LandingPage({ settings }: { settings: SettingsData | nul
       <footer className="bg-slate-900 py-12 mt-20 relative z-10 border-t-8 border-yellow-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center items-center gap-3 mb-6">
-             {settings?.logoUrl && <img src={settings.logoUrl} alt="Logo" className="h-10 w-10 object-contain rounded-lg bg-white p-1" />}
+             <img src={settings?.logoUrl || '/logo.png'} alt="Logo" className="h-10 w-10 object-contain rounded-lg bg-white p-1" />
              <span className="font-black text-white tracking-widest text-2xl uppercase">
                {settings?.appName || 'Adza Belajar'}
              </span>
@@ -254,7 +249,7 @@ function AppCard({ app, isFav, onFav }: { app: AppData, isFav: boolean, onFav: (
 
       <div className={`w-24 h-24 mb-6 rounded-[1.5rem] ${randomBg} flex items-center justify-center shrink-0 border-4 border-slate-900 p-2 shadow-[4px_4px_0_0_rgba(0,0,0,0.1)] transform -rotate-3 group-hover:rotate-0 transition-transform`}>
          {app.icon ? (
-           <img src={app.icon} alt={app.name} className="w-full h-full object-contain" onError={(e) => (e.currentTarget.style.display = 'none')} />
+           <img src={formatImageUrl(app.icon)} alt={app.name} className="w-full h-full object-contain" onError={(e) => (e.currentTarget.style.display = 'none')} />
          ) : (
            <Gamepad2 className="w-12 h-12 text-slate-900 stroke-[3px]" />
          )}
