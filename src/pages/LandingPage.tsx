@@ -59,7 +59,7 @@ export default function LandingPage({ settings }: { settings: SettingsData | nul
       <header className="sticky top-0 z-50 bg-white border-b-4 border-slate-900 shadow-[0_4px_0_0_rgba(0,0,0,0.1)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src={settings?.logoUrl || '/logo.png'} alt="Logo" className="h-12 w-12 object-contain bg-yellow-100 border-2 border-slate-900 rounded-xl shadow-[2px_2px_0_0_#0f172a] transform -rotate-3" />
+            <img src={settings?.logoUrl || 'https://lh3.googleusercontent.com/d/1-rNGqb6l_Riq4oQVaUwsI3uQPkzgU4o8'} alt="Logo" className="h-12 w-12 object-contain bg-yellow-100 border-2 border-slate-900 rounded-xl shadow-[2px_2px_0_0_#0f172a] transform -rotate-3" />
             <span className="font-black text-2xl tracking-tight text-slate-900 uppercase [-webkit-text-stroke:1px_#0f172a] text-white drop-shadow-[2px_2px_0_#0f172a]">
               {settings?.appName || 'Adza Belajar'}
             </span>
@@ -215,7 +215,7 @@ export default function LandingPage({ settings }: { settings: SettingsData | nul
       <footer className="bg-slate-900 py-12 mt-20 relative z-10 border-t-8 border-yellow-400">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center items-center gap-3 mb-6">
-             <img src={settings?.logoUrl || '/logo.png'} alt="Logo" className="h-10 w-10 object-contain rounded-lg bg-white p-1" />
+             <img src={settings?.logoUrl || 'https://lh3.googleusercontent.com/d/1-rNGqb6l_Riq4oQVaUwsI3uQPkzgU4o8'} alt="Logo" className="h-10 w-10 object-contain rounded-lg bg-white p-1" />
              <span className="font-black text-white tracking-widest text-2xl uppercase">
                {settings?.appName || 'Adza Belajar'}
              </span>

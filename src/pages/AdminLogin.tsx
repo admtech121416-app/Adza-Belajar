@@ -40,7 +40,7 @@ export default function AdminLogin() {
       <div className="w-full max-w-md bg-white rounded-3xl shadow-[8px_8px_0_0_#0f172a] border-4 border-slate-900 p-8 transform rotate-1">
         <div className="text-center mb-8">
           <div className="inline-flex items-center justify-center w-24 h-24 bg-white border-4 border-slate-900 rounded-[2rem] mb-4 shadow-[4px_4px_0_0_#0f172a] transform -rotate-6 p-2">
-            <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
+            <img src="https://lh3.googleusercontent.com/d/1-rNGqb6l_Riq4oQVaUwsI3uQPkzgU4o8" alt="Logo" className="w-full h-full object-contain" />
           </div>
           <h1 className="text-3xl font-black text-slate-900 uppercase">Administrator</h1>
           <p className="text-slate-600 font-bold mt-2">Masuk untuk mengelola Adza Belajar</p>
