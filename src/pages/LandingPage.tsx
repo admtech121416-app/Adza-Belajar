@@ -234,11 +234,8 @@ function AppCard({ app, isFav, onFav }: { app: AppData, isFav: boolean, onFav: (
   const randomBg = bgColors[Math.abs(app.id.charCodeAt(0)) % bgColors.length];
 
   return (
-    <Link 
-      to={`/app/${app.id}`}
-      className="group flex flex-col h-full bg-white rounded-[2rem] p-6 border-4 border-slate-900 shadow-[6px_6px_0_0_#0f172a] hover:-translate-y-2 hover:shadow-[10px_10px_0_0_#0f172a] transition-all duration-200 relative"
-    >
-      <div className="absolute top-5 right-5 z-10">
+    <div className="group relative h-full">
+      <div className="absolute top-5 right-5 z-20">
         <button 
           onClick={(e) => onFav(e, app.id)}
           className="w-12 h-12 flex items-center justify-center bg-white border-4 border-slate-900 rounded-full hover:bg-yellow-100 shadow-[2px_2px_0_0_#0f172a] transform hover:scale-110 transition-transform"
@@ -247,26 +244,31 @@ function AppCard({ app, isFav, onFav }: { app: AppData, isFav: boolean, onFav: (
         </button>
       </div>
 
-      <div className={`w-24 h-24 mb-6 rounded-[1.5rem] ${randomBg} flex items-center justify-center shrink-0 border-4 border-slate-900 p-2 shadow-[4px_4px_0_0_rgba(0,0,0,0.1)] transform -rotate-3 group-hover:rotate-0 transition-transform`}>
-         {app.icon ? (
-           <img src={formatImageUrl(app.icon)} alt={app.name} className="w-full h-full object-contain" onError={(e) => (e.currentTarget.style.display = 'none')} />
-         ) : (
-           <Gamepad2 className="w-12 h-12 text-slate-900 stroke-[3px]" />
-         )}
-      </div>
-      
-      <div className="mb-4 flex-1">
-        <span className="inline-block px-3 py-1.5 bg-yellow-300 text-slate-900 text-xs font-black rounded-xl mb-4 uppercase border-2 border-slate-900 shadow-[2px_2px_0_0_#0f172a]">
-          {app.category}
-        </span>
-        <h3 className="text-2xl font-black text-slate-900 leading-tight mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">{app.name}</h3>
-        <p className="text-slate-600 font-bold text-sm line-clamp-3">{app.description}</p>
-      </div>
+      <Link 
+        to={`/app/${app.id}`} 
+        className="flex flex-col h-full bg-white rounded-[2rem] p-6 border-4 border-slate-900 shadow-[6px_6px_0_0_#0f172a] md:hover:-translate-y-2 hover:shadow-[10px_10px_0_0_#0f172a] transition-all duration-200 relative z-10"
+      >
+        <div className={`w-24 h-24 mb-6 rounded-[1.5rem] ${randomBg} flex items-center justify-center shrink-0 border-4 border-slate-900 p-2 shadow-[4px_4px_0_0_rgba(0,0,0,0.1)] transform -rotate-3 group-hover:rotate-0 transition-transform`}>
+           {app.icon ? (
+             <img src={formatImageUrl(app.icon)} alt={app.name} className="w-full h-full object-contain" onError={(e) => (e.currentTarget.style.display = 'none')} />
+           ) : (
+             <Gamepad2 className="w-12 h-12 text-slate-900 stroke-[3px]" />
+           )}
+        </div>
+        
+        <div className="mb-4 flex-1">
+          <span className="inline-block px-3 py-1.5 bg-yellow-300 text-slate-900 text-xs font-black rounded-xl mb-4 uppercase border-2 border-slate-900 shadow-[2px_2px_0_0_#0f172a]">
+            {app.category}
+          </span>
+          <h3 className="text-2xl font-black text-slate-900 leading-tight mb-3 group-hover:text-blue-600 transition-colors line-clamp-2">{app.name}</h3>
+          <p className="text-slate-600 font-bold text-sm line-clamp-3">{app.description}</p>
+        </div>
 
-      <div className="mt-4 bg-emerald-400 border-4 border-slate-900 text-slate-900 font-black py-4 px-5 rounded-2xl flex items-center justify-between group-hover:bg-emerald-300 shadow-[4px_4px_0_0_#0f172a] group-hover:translate-y-1 group-hover:shadow-[2px_2px_0_0_#0f172a] transition-all">
-        <span className="text-lg">MAIN SEKARANG</span>
-        <ArrowRight className="w-6 h-6 stroke-[3px]" />
-      </div>
-    </Link>
+        <div className="mt-4 bg-emerald-400 border-4 border-slate-900 text-slate-900 font-black py-4 px-5 rounded-2xl flex items-center justify-between md:group-hover:bg-emerald-300 shadow-[4px_4px_0_0_#0f172a] md:group-hover:translate-y-1 md:group-hover:shadow-[2px_2px_0_0_#0f172a] transition-all">
+          <span className="text-lg">MAIN SEKARANG</span>
+          <ArrowRight className="w-6 h-6 stroke-[3px]" />
+        </div>
+      </Link>
+    </div>
   );
 }

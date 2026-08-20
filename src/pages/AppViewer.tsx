@@ -9,7 +9,8 @@ export default function AppViewer() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [app, setApp] = useState<AppData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [fetchingApp, setFetchingApp] = useState(true);
+  const [iframeLoading, setIframeLoading] = useState(true);
   const [error, setError] = useState(false);
   const [iframeKey, setIframeKey] = useState(0);
 
@@ -29,11 +30,21 @@ export default function AppViewer() {
         setError(true);
       }
     }).catch(() => setError(true))
-    .finally(() => setLoading(false));
+    .finally(() => setFetchingApp(false));
   }, [id]);
 
+  useEffect(() => {
+    if (app && iframeLoading) {
+      // Safety timeout: if iframe doesn't trigger onLoad after 5s, hide the loader anyway
+      const timer = setTimeout(() => {
+        setIframeLoading(false);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [app, iframeLoading, iframeKey]);
+
   const handleRefresh = () => {
-    setLoading(true);
+    setIframeLoading(true);
     setIframeKey(k => k + 1);
   };
 
@@ -52,7 +63,7 @@ export default function AppViewer() {
     }
   };
 
-  if (loading && !app) {
+  if (fetchingApp && !app) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-sky-300">
         <div className="w-20 h-20 bg-yellow-400 border-8 border-slate-900 rounded-full animate-bounce shadow-[8px_8px_0_0_#0f172a] mb-8"></div>
@@ -129,10 +140,10 @@ export default function AppViewer() {
 
       {/* Main Content Area */}
       <main className="flex-1 bg-white relative rounded-b-3xl overflow-hidden m-2 border-4 border-slate-900 shadow-[inset_0_0_20px_rgba(0,0,0,0.1)]">
-        {loading && (
+        {iframeLoading && (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/90 backdrop-blur-sm z-10">
                <div className="w-20 h-20 bg-blue-500 border-8 border-slate-900 rounded-full animate-bounce shadow-[6px_6px_0_0_#0f172a] mb-6"></div>
-               <p className="text-3xl font-black text-slate-900 uppercase">Membuka...</p>
+               <p className="text-3xl font-black text-slate-900 uppercase">Memuat Game...</p>
           </div>
         )}
         <iframe
@@ -143,7 +154,7 @@ export default function AppViewer() {
           className="w-full h-full border-0 rounded-b-xl"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; microphone; camera; display-capture"
           allowFullScreen
-          onLoad={() => setLoading(false)}
+          onLoad={() => setIframeLoading(false)}
           sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-downloads"
         ></iframe>
       </main>
