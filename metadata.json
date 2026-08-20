@@ -1,0 +1,8 @@
+{
+  "name": "Adza Belajar",
+  "description": "Learning portal / landing page pendidikan",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

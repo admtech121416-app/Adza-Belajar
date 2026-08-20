@@ -1,0 +1,67 @@
+{
+  "apps": [
+    {
+      "id": "1",
+      "name": "IPA DIGI",
+      "description": "Media pembelajaran IPA interaktif",
+      "url": "https://example.com",
+      "category": "IPA",
+      "icon": "https://cdn.iconscout.com/icon/free/png-256/free-science-2038753-1721526.png",
+      "active": true,
+      "order": 1,
+      "createdAt": "2026-08-20T02:54:56.045Z",
+      "updatedAt": "2026-08-20T02:54:56.046Z"
+    },
+    {
+      "id": "2",
+      "name": "Adza Asesmen",
+      "description": "Platform ujian dan asesmen siswa",
+      "url": "https://example.com",
+      "category": "Asesmen",
+      "icon": "https://cdn.iconscout.com/icon/free/png-256/free-exam-1915783-1620317.png",
+      "active": true,
+      "order": 2,
+      "createdAt": "2026-08-20T02:54:56.046Z",
+      "updatedAt": "2026-08-20T02:54:56.046Z"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Semua",
+      "order": 1
+    },
+    {
+      "id": "2",
+      "name": "Pembelajaran",
+      "order": 2
+    },
+    {
+      "id": "3",
+      "name": "Asesmen",
+      "order": 3
+    },
+    {
+      "id": "4",
+      "name": "IPA",
+      "order": 4
+    },
+    {
+      "id": "5",
+      "name": "Literasi",
+      "order": 5
+    },
+    {
+      "id": "6",
+      "name": "Numerasi",
+      "order": 6
+    }
+  ],
+  "settings": {
+    "appName": "Adza Belajar",
+    "heroTitle": "SAYA SUKA BELAJAR",
+    "heroSubtitle": "Ayo main dan belajar bersama di Adza Belajar! Pilih game favoritmu di bawah ini ya!",
+    "logoUrl": "https://drive.google.com/uc?export=view&id=1-rNGqb6l_Riq4oQVaUwsI3uQPkzgU4o8",
+    "faviconUrl": "https://drive.google.com/uc?export=view&id=1-rNGqb6l_Riq4oQVaUwsI3uQPkzgU4o8"
+  }
+}
